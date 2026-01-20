@@ -454,7 +454,36 @@ Configure branch protection to enforce quality gates:
 Pre-commit Hooks
 ~~~~~~~~~~~~~~~~
 
-Use pre-commit hooks for local validation before push:
+Use pre-commit hooks for local validation before push.
+
+**Using ubCode (ubc)**
+
+The recommended approach is to use `ubCode <https://ubcode.useblocks.com>`_ (``ubc``),
+the Sphinx-Needs companion CLI that provides built-in validation:
+
+.. code-block:: yaml
+
+   # file: .pre-commit-config.yaml
+   repos:
+     - repo: local
+       hooks:
+         - id: ubc-check
+           name: Validate Sphinx-Needs with ubCode
+           entry: ubc check docs/
+           language: system
+           files: '\.rst$'
+           pass_filenames: false
+
+``ubc check`` validates:
+
+* Need ID uniqueness and format
+* Required fields and attributes
+* Link integrity between needs
+* Schema compliance (when configured)
+
+**Custom Validation Scripts**
+
+Alternatively, use custom Python scripts for specific validation rules:
 
 .. code-block:: yaml
 
@@ -477,7 +506,48 @@ Use pre-commit hooks for local validation before push:
 CI Validation
 ~~~~~~~~~~~~~
 
-Use CI to enforce constraints that complement access control:
+Use CI to enforce constraints that complement access control.
+
+**Using ubc-action**
+
+The `ubc-action <https://github.com/useblocks/ubc-action>`_ provides a GitHub Action
+to run ubCode validation in your CI pipeline:
+
+.. code-block:: yaml
+
+   # file: .github/workflows/validate-requirements.yml
+   name: Validate Requirements
+   on: [pull_request]
+
+   jobs:
+     validate:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v4
+
+         - name: Setup ubCode
+           uses: useblocks/ubc-action@v1
+           with:
+             license-key: ${{ secrets.UBCODE_LICENSE_KEY }}
+             license-user: ${{ secrets.UBCODE_LICENSE_USER }}
+
+         - name: Validate requirements with ubCode
+           run: ubc check docs/
+
+         - name: Build documentation (strict mode)
+           run: |
+             pip install sphinx sphinx-needs
+             sphinx-build -W -b html docs docs/_build/html
+
+.. tip::
+
+   For a complete example of a documentation build workflow with GitHub Actions,
+   see this repository's workflow in ``.github/workflows/gh_pages.yml`` or view it on
+   `GitHub <https://github.com/useblocks/x-as-code/blob/main/.github/workflows/gh_pages.yml>`_.
+
+**Custom Validation Scripts**
+
+For additional validation beyond what ubCode provides:
 
 .. code-block:: yaml
 

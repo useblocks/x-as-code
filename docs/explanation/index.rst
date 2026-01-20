@@ -3,5 +3,17 @@
 :octicon:`repo` Explanation
 ===========================
 
-* Requirement Engineering with XaC: Does and Donts 
-* Tool overview about Engineering as Code Tools
+Understanding the principles and concepts behind X-as-Code workflows.
+
+.. toctree::
+   :maxdepth: 1
+
+   review-process
+   access-management
+
+.. note::
+
+   Coming soon:
+
+   * Requirement Engineering with XaC: Dos and Don'ts
+   * Tool overview about Engineering as Code Tools

@@ -207,40 +207,6 @@ For detailed comparison of ALM workflows vs. Git-based reviews, see
 Business Case for Management
 ----------------------------
 
-Total Cost of Ownership
-~~~~~~~~~~~~~~~~~~~~~~~
-
-A realistic 5-year TCO comparison for a 50-person engineering team:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 30 35 35
-
-   * - Cost Factor
-     - Multi-Tool (5 years)
-     - X-as-Code (5 years)
-   * - Tool licensing
-     - $1.5M - $3M (4-6 tools @ $500-1000/user/year)
-     - $0 - $150K (optional commercial features)
-   * - Integration development
-     - $200K - $500K (custom connectors)
-     - Minimal (native Git)
-   * - Integration maintenance
-     - $100K - $300K (ongoing updates)
-     - Minimal
-   * - Training
-     - $150K - $300K (tool-specific)
-     - $25K - $50K (Git skills reusable)
-   * - Administration
-     - $300K - $600K (1-2 FTE)
-     - $50K - $100K (part-time DevOps)
-   * - **Total**
-     - **$2.25M - $4.7M**
-     - **$75K - $300K**
-
-These figures are illustrative; actual costs vary by organization. The key
-insight is the order-of-magnitude difference in total cost.
-
 Team Velocity and Productivity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

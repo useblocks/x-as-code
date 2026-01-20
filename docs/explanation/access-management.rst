@@ -622,7 +622,7 @@ When to Consider ubTrace
 
 ubTrace is part of the useblocks commercial offering alongside
 `ubConnect <https://useblocks.com>`_ for ALM data synchronization and
-`ubCode <https://useblocks.com>`_ for VS Code integration.
+`ubCode VS Code extension <https://ubcode.useblocks.com>`_ for VS Code integration.
 
 .. seealso::
 

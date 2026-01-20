@@ -8,6 +8,7 @@ Understanding the principles and concepts behind X-as-Code workflows.
 .. toctree::
    :maxdepth: 1
 
+   xac-vs-multi-tool
    review-process
    access-management
 

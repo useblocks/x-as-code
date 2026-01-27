@@ -13,7 +13,7 @@ Introduction
 
       .. div:: sd-font-weight-bold
 
-         Everything-as-Code (X as Code)
+         X-as-Code
 
       .. div:: sd-fs-5 sd-font-italic
 

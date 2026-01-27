@@ -130,7 +130,7 @@ html_theme_options = {
     "source_repository": "https://github.com/useblocks/x-as-code",
     "source_branch": "main",
     "source_directory": "docs",
-    "light_logo": "eac_logo.png",
-    "dark_logo": "eac_logo_dark.png",
+    "light_logo": "xac_logo.png",
+    "dark_logo": "xac_logo_dark.png",
 }
 html_css_files = ["custom.css"]

@@ -13,6 +13,12 @@ name = "X-as-Code (XaC)"
 description = "Showcases for working with Sphinx-Needs"
 srcdir = "."
 
+[parse]
+ignore_directives = [
+  # src-trace is not recognized by ubcode and produces a warning lint.
+  "src-trace"
+]
+
 # Rules for the ubCode formater, to get a nice looking documentation.
 [format_rst]
 fail_on_warning = []
@@ -80,7 +86,7 @@ id_regex = "[A-Z_]{3,10}(_[\\d]{1,3})*"
 
 [needs.global_options.style]
 predicates = [
-  
+
 ]
 
 [needs.global_options.runs]
@@ -171,7 +177,7 @@ style = "node"
 
 [[needs.types]]
 directive = "test-spec"
-title = "Test Specification" 
+title = "Test Specification"
 prefix = "TS_"
 color = "#A6BDD7"
 style = "node"

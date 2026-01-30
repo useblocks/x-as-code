@@ -1,7 +1,7 @@
 .. _tutorial-sphinx-needs-setup:
 
 :octicon:`rocket` Setting Up a Sphinx-Needs Project
-====================================================
+===================================================
 
 This tutorial guides you through setting up a new Sphinx documentation
 project with sphinx-needs from scratch. By the end, you'll have a
@@ -19,7 +19,8 @@ Prerequisites
 
 Before starting, ensure you have:
 
-* **Python 3.12+** installed on your system (required by Sphinx 9.x and sphinx-needs 6.x)
+* **Python 3.12+** installed on your system (required by Sphinx 9.x and
+  sphinx-needs 6.x)
 * **uv** - a fast Python package and project manager
 * A terminal/command line
 * A text editor or IDE (VS Code with ubCode extension recommended)
@@ -46,10 +47,10 @@ If you don't have ``uv`` installed, install it first:
 
    **What is uv?**
 
-   uv is an extremely fast Python package and project manager written
-   in Rust. It's 10-100x faster than pip and replaces pip, virtualenv,
-   and pyenv in a single tool. It handles virtual environments,
-   dependencies, and Python version management seamlessly.
+   uv is an extremely fast Python package and project manager written in
+   Rust. It's 10-100x faster than pip and replaces pip, virtualenv, and
+   pyenv in a single tool. It handles virtual environments, dependencies,
+   and Python version management seamlessly.
 
 What is Sphinx?
 ---------------
@@ -87,8 +88,8 @@ Sphinx-needs manages "need items" through a lifecycle:
 
 1. **Collection**: Needs are parsed from RST files during the read phase
 2. **Resolution**: Dynamic fields and links are resolved
-3. **Analysis**: Directives like ``needtable`` and ``needflow`` query
-   the collected needs
+3. **Analysis**: Directives like ``needtable`` and ``needflow`` query the
+   collected needs
 4. **Rendering**: Needs are rendered to HTML, PDF, or other formats
 5. **Validation**: Constraints and warnings are checked
 
@@ -100,13 +101,10 @@ Each need is a node in a graph structure with:
 * Optional **metadata** (status, tags, priority, etc.)
 * **Links** to other needs
 
-.. seealso::
-
-   For comprehensive documentation, see the
-   `official sphinx-needs website <https://sphinx-needs.readthedocs.io/en/latest/>`_.
+.. seealso:: For comprehensive documentation, see the `official sphinx-needs website <https://sphinx-needs.readthedocs.io/en/latest/>`_.
 
 Step 1: Create Project Directory
----------------------------------
+--------------------------------
 
 Create a new directory for your documentation project:
 
@@ -116,7 +114,7 @@ Create a new directory for your documentation project:
    cd my-docs-project
 
 Step 2: Set Up Python Environment with uv
-------------------------------------------
+-----------------------------------------
 
 Initialize a new Python project with uv:
 
@@ -152,7 +150,7 @@ Your project structure now looks like:
    used.
 
 Step 3: Install Dependencies
------------------------------
+----------------------------
 
 Add Sphinx and sphinx-needs to your project:
 
@@ -175,7 +173,7 @@ This installs:
       # Output: sphinx-build 8.3.0
 
 Step 4: Initialize Sphinx Project
-----------------------------------
+---------------------------------
 
 Run the Sphinx quickstart wizard. This creates a source directory and
 generates a default ``conf.py`` with useful configuration values:
@@ -211,11 +209,11 @@ This creates the following structure:
    └── pyproject.toml
 
 Step 5: Create the ubproject.toml Configuration
-------------------------------------------------
+-----------------------------------------------
 
 Instead of configuring sphinx-needs directly in ``conf.py``, we use a
-separate ``ubproject.toml`` file. This declarative approach has several
-advantages:
+separate ``ubproject.toml`` file. This declarative approach has
+several advantages:
 
 * **Clean separation**: Configuration is separate from Python code
 * **Tooling support**: Works with ubCode (VS Code extension) for
@@ -230,9 +228,9 @@ advantages:
 
    ubCode is a VS Code extension that provides a lightning-fast language
    server for Sphinx-Needs projects. It offers real-time RST previews,
-   linting, smart need filtering, and editor navigation. The
-   ``ubproject.toml`` file is the standard configuration format for
-   ubCode-compatible projects.
+   linting, smart need filtering, and editor navigation. The ``ubproject.toml``
+   file is the standard configuration format for ubCode-compatible
+   projects.
 
 Create ``docs/ubproject.toml``:
 
@@ -340,12 +338,12 @@ Create ``docs/ubproject.toml``:
    * `Extra Links <https://sphinx-needs.readthedocs.io/en/latest/configuration.html#needs-extra-links>`_
 
 Step 6: Configure conf.py
---------------------------
+-------------------------
 
 Edit ``docs/conf.py`` to enable sphinx-needs and load the TOML
 configuration. The ``conf.py`` file is executed as Python, allowing
-complex customization, but we keep it minimal by delegating sphinx-needs
-configuration to the TOML file:
+complex customization, but we keep it minimal by delegating
+sphinx-needs configuration to the TOML file:
 
 .. code-block:: python
 
@@ -377,11 +375,12 @@ configuration to the TOML file:
    html_static_path = ['_static']
 
 The key line is ``needs_from_toml = "ubproject.toml"`` which tells
-sphinx-needs to read its configuration from the TOML file. All settings
-in the ``[needs]`` section of the TOML file are loaded automatically.
+sphinx-needs to read its configuration from the TOML file. All
+settings in the ``[needs]`` section of the TOML file are loaded
+automatically.
 
 Step 7: Create Your First Documentation
-----------------------------------------
+---------------------------------------
 
 Replace the contents of ``docs/index.rst`` with:
 
@@ -407,7 +406,7 @@ Replace the contents of ``docs/index.rst`` with:
    * :ref:`search`
 
 Step 8: Write Requirements
----------------------------
+--------------------------
 
 Create ``docs/requirements.rst``:
 
@@ -459,8 +458,7 @@ Syntax Reference
 * ``.. req:: Title`` - Creates a requirement (the directive name comes
   from ``needs.types``)
 * ``:id: REQ_001`` - Unique identifier (must match ``id_regex``)
-* ``:status: open`` - Current status (custom option from
-  ``extra_options``)
+* ``:status: open`` - Current status (custom option from ``extra_options``)
 * ``:priority: high`` - Priority level (custom option)
 * ``:derives: REQ_001`` - Link to another need (from ``extra_links``)
 
@@ -468,7 +466,7 @@ The content of a need can include any RST markup: lists, code blocks,
 tables, images, and more.
 
 Step 9: Add Specifications and Tests
--------------------------------------
+------------------------------------
 
 Create ``docs/specifications.rst``:
 
@@ -549,10 +547,10 @@ Create ``docs/specifications.rst``:
       **Expected Result**: 401 response with error message
 
 Step 10: Create Traceability Views
------------------------------------
+----------------------------------
 
-Create ``docs/traceability.rst`` to visualize the relationships between
-your needs:
+Create ``docs/traceability.rst`` to visualize the relationships
+between your needs:
 
 .. code-block:: rst
 
@@ -599,8 +597,7 @@ your needs:
 
       We use ``:engine: graphviz`` here because Graphviz is easier to
       set up (no Java required). For more advanced diagrams and
-      additional directives like ``needsequence`` or ``needuml``, see
-      :ref:`tutorial-plantuml-setup`.
+      additional directives like ``needsequence`` or ``needuml``.
 
    Specifications Matrix
    ---------------------
@@ -634,7 +631,7 @@ your needs:
       :sort: type
 
 Step 11: Build the Documentation
----------------------------------
+--------------------------------
 
 Generate HTML documentation:
 
@@ -680,7 +677,7 @@ You should see your documentation with:
    browser.
 
 Final Project Structure
-------------------------
+-----------------------
 
 Your complete project structure:
 
@@ -706,7 +703,7 @@ Your complete project structure:
    └── pyproject.toml
 
 Understanding ubproject.toml
------------------------------
+----------------------------
 
 The ``ubproject.toml`` file follows a specific structure. Here's a
 reference of the key sections:
@@ -761,8 +758,8 @@ Use ``[[needs.types]]`` (double brackets for arrays):
    color = "#FFB300"          # Hex color for diagrams
    style = "node"             # PlantUML style
 
-Available styles: ``node``, ``artifact``, ``frame``, ``storage``,
-``database``, ``actor``
+Available styles: ``node``, ``artifact``, ``frame``, ``storage``, ``database``,
+``actor``
 
 Link Types
 ~~~~~~~~~~
@@ -785,8 +782,9 @@ Use ``[[needs.extra_links]]`` for traceability relationships:
 Schema Validation (sphinx-needs 6.0+)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Starting with sphinx-needs 6.0, you can define typed extra options with
-JSON schema constraints. This provides validation for custom fields:
+Starting with sphinx-needs 6.0, you can define typed extra options
+with JSON schema constraints. This provides validation for custom
+fields:
 
 .. code-block:: toml
 
@@ -808,17 +806,17 @@ JSON schema constraints. This provides validation for custom fields:
 
 This approach provides:
 
-* **Type checking** - Ensure values match expected types (string, integer,
-  boolean, array)
+* **Type checking** - Ensure values match expected types (string,
+  integer, boolean, array)
 * **Enum constraints** - Restrict values to a predefined set
 * **Range validation** - Set minimum/maximum for numeric fields
 * **Build-time warnings** - Invalid values trigger warnings during build
 
-When schema violations occur, sphinx-needs generates a
-``schema_violations.json`` file alongside ``needs.json`` for debugging.
+When schema violations occur, sphinx-needs generates a ``schema_violations.json``
+file alongside ``needs.json`` for debugging.
 
 VS Code Setup with ubCode
---------------------------
+-------------------------
 
 For the best editing experience, install the ubCode extension:
 
@@ -848,7 +846,7 @@ Create ``.vscode/settings.json``:
    }
 
 Common Commands Reference
---------------------------
+-------------------------
 
 .. code-block:: bash
 
@@ -874,7 +872,8 @@ Common Commands Reference
 Next Steps
 ----------
 
-Now that you have a working Sphinx-Needs project, explore these topics:
+Now that you have a working Sphinx-Needs project, explore these
+topics:
 
 **Enhance Your Configuration:**
 
@@ -929,8 +928,8 @@ these important changes:
 
 * Requires Sphinx 7.4+ and Python 3.10+
 * Introduced JSON schema validation for extra options
-* Removed deprecated ``needfilter`` directive (use ``needtable`` or
-  ``needlist`` instead)
+* Removed deprecated ``needfilter`` directive (use ``needtable`` or ``needlist``
+  instead)
 * Variant syntax changed to require ``<< >>`` wrappers
 * Default values only apply to missing/None fields (not falsy values
   like empty strings)
@@ -940,8 +939,7 @@ Official Documentation
 
 * `Sphinx Documentation <https://www.sphinx-doc.org/>`_
 * `Sphinx-Needs Documentation <https://sphinx-needs.readthedocs.io/>`_
-* `Sphinx-Needs Configuration
-  <https://sphinx-needs.readthedocs.io/en/latest/configuration.html>`_
+* `Sphinx-Needs Configuration <https://sphinx-needs.readthedocs.io/en/latest/configuration.html>`_
 * `ubCode Documentation <https://ubcode.useblocks.com/>`_
 * `uv Documentation <https://docs.astral.sh/uv/>`_
 
@@ -977,7 +975,6 @@ The ``needflow`` directive supports two rendering engines:
 
 1. **Graphviz** (recommended for getting started) - Requires only the
    Graphviz system package. Use ``:engine: graphviz`` in your directive.
-
 2. **PlantUML** (default) - Requires Java + PlantUML JAR +
    sphinxcontrib-plantuml. Provides more styling options.
 
@@ -996,17 +993,17 @@ Install Graphviz for basic diagram generation:
 
 **PlantUML errors (Java/JAR not found)**
 
-If you see errors like ``plantuml command cannot be run`` or
-``FileNotFoundError: java``, you're using the default PlantUML engine
-without proper setup. You have two options:
+If you see errors like ``plantuml command cannot be run`` or ``FileNotFoundError: java``,
+you're using the default PlantUML engine without proper setup. You
+have two options:
 
 1. **Quick fix**: Add ``:engine: graphviz`` to your ``needflow``
    directives
 2. **Full setup**: Follow :ref:`tutorial-plantuml-setup` to install
    PlantUML
 
-To set Graphviz as the default engine for all needflow directives,
-add to ``conf.py``:
+To set Graphviz as the default engine for all needflow directives, add
+to ``conf.py``:
 
 .. code-block:: python
 
@@ -1039,8 +1036,8 @@ case-sensitive. Use the generated ``needs.json`` to verify all IDs.
 
 **Schema validation warnings (sphinx-needs 6.0+)**
 
-If you're using typed extra options with schema validation, you may see
-warnings like ``sn_schema_warning`` or ``sn_schema_violation``. To
+If you're using typed extra options with schema validation, you may
+see warnings like ``sn_schema_warning`` or ``sn_schema_violation``. To
 suppress specific warning types, add to ``conf.py``:
 
 .. code-block:: python
@@ -1057,24 +1054,35 @@ details about validation failures.
 Next Steps
 ----------
 
-Now that you have a working sphinx-needs project, explore these topics:
+Now that you have a working sphinx-needs project, explore these
+topics:
 
-* :ref:`tutorial-plantuml-setup` - Enable PlantUML for advanced diagrams (needsequence, needuml, needgantt)
-* :ref:`tutorial-creating-dashboards` - Create visual dashboards with charts and diagrams
-* :ref:`how-to-write-requirements` - Best practices for writing requirements
+* :ref:`tutorial-plantuml-setup` - Enable PlantUML for advanced diagrams
+  (needsequence, needuml, needgantt)
+* :ref:`tutorial-creating-dashboards` - Create visual dashboards with
+  charts and diagrams
+* :ref:`how-to-write-requirements` - Best practices for writing
+  requirements
 * :ref:`external-needs` - Import needs from external systems like Jira
 
 .. seealso::
 
    **sphinx-needs Reference:**
 
-   * `Official sphinx-needs Docs <https://sphinx-needs.readthedocs.io/en/latest/>`_ - Getting started guide
-   * `Directives Reference <https://sphinx-needs.readthedocs.io/en/latest/directives/index.html>`_ - All available directives
-   * `Configuration Options <https://sphinx-needs.readthedocs.io/en/latest/configuration.html>`_ - Complete configuration reference
-   * `Filter Expressions <https://sphinx-needs.readthedocs.io/en/latest/filter.html>`_ - Query and filter your needs
-   * `Layouts & Styles <https://sphinx-needs.readthedocs.io/en/latest/layout_styles.html>`_ - Customize how needs are displayed
+   * `Official sphinx-needs Docs <https://sphinx-needs.readthedocs.io/en/latest/>`_
+     - Getting started guide
+   * `Directives Reference <https://sphinx-needs.readthedocs.io/en/latest/directives/index.html>`_
+     - All available directives
+   * `Configuration Options <https://sphinx-needs.readthedocs.io/en/latest/configuration.html>`_
+     - Complete configuration reference
+   * `Filter Expressions <https://sphinx-needs.readthedocs.io/en/latest/filter.html>`_
+     - Query and filter your needs
+   * `Layouts & Styles <https://sphinx-needs.readthedocs.io/en/latest/layout_styles.html>`_
+     - Customize how needs are displayed
 
    **Related Tools:**
 
-   * `Official Sphinx Docs <https://www.sphinx-doc.org/en/master/>`_ - Sphinx documentation generator
-   * `reStructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ - RST syntax guide
+   * `Official Sphinx Docs <https://www.sphinx-doc.org/en/master/>`_ -
+     Sphinx documentation generator
+   * `reStructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
+     - RST syntax guide

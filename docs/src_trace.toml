@@ -6,10 +6,10 @@ set_remote_url = true           # Set to true to enable remote url to be generat
 remote_url_field = "remote-url" # Need's field name for remote URL
 
 
-[codelinks.projects.eac-cpp]
-remote_url_pattern = "https://github.com/useblocks/eac/blob/{commit}/{path}#L{line}" # URL pattern for remote source code
+[codelinks.projects.x-as-code-cpp]
+remote_url_pattern = "https://github.com/useblocks/x-as-code/blob/{commit}/{path}#L{line}" # URL pattern for remote source code
 
-[codelinks.projects.eac-cpp.source_discover]
+[codelinks.projects.x-as-code-cpp.source_discover]
 src_dir = "../src" # Relative path from this TOML config to the source directory
 include = [
     "*.cpp",
@@ -19,12 +19,12 @@ exclude=[]
 gitignore = true
 comment_type = "cpp"
 
-[codelinks.projects.eac-cpp.analyse]
+[codelinks.projects.x-as-code-cpp.analyse]
 get_need_id_refs = true
 get_oneline_needs = true
 get_rst = true
 
-[codelinks.projects.eac-cpp.analyse.oneline_comment_style]
+[codelinks.projects.x-as-code-cpp.analyse.oneline_comment_style]
 # start_sequence = "@"
 # end_sequence for the online comments; default is an os-dependant newline character
 field_split_char = ","

@@ -18,6 +18,7 @@ include(FetchContent)
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 FetchContent_MakeAvailable(googletest)
 
@@ -25,7 +26,7 @@ FetchContent_MakeAvailable(googletest)
 set(SOURCE_FILES main.cpp)
 
 # Add executable target with source files listed in SOURCE_FILES variable
-add_executable(eac-cpp ${SOURCE_FILES})
+add_executable(x-as-code-cpp ${SOURCE_FILES})
 
 # Library with the code to be tested
 add_library(
@@ -66,24 +67,24 @@ if(ENABLE_COVERAGE)
     add_custom_target(coverage
       # Clear previous coverage data
       COMMAND ${LCOV_PATH} --directory . --zerocounters
-      
+
       # Run tests
       COMMAND ${CMAKE_CURRENT_BINARY_DIR}/eac_test
-      
+
       # Capture coverage data, ignoring errors from GoogleTest
       COMMAND ${LCOV_PATH} --directory . --capture --output-file coverage.info --ignore-errors mismatch,inconsistent,negative,format --rc derive_function_end_line=0
-      
+
       # Remove system headers, external dependencies, and test files from coverage
       COMMAND ${LCOV_PATH} --remove coverage.info '/usr/*' '*/_deps/*' '*/test/*' '*_unittest.cpp' '*_test.cpp' 'eac_test.cpp' --output-file coverage_filtered.info --ignore-errors unused
-      
+
       # Generate HTML report
       COMMAND ${GENHTML_PATH} coverage_filtered.info --output-directory coverage_html --ignore-errors source
-      
+
       DEPENDS eac_test
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       COMMENT "Generating code coverage report..."
     )
-    
+
     message(STATUS "Code coverage targets available: 'make coverage'")
   else()
     message(WARNING "lcov or genhtml not found. Coverage report generation will not be available.")

@@ -1,15 +1,15 @@
 .. _testing:
 
 :octicon:`beaker` Test Management and Traceability
-===================================================
+==================================================
 
-.. toctree::
+.. toctree:: requirements
    :maxdepth: 1
    :hidden:
 
-   requirements
-
-This guide demonstrates how to integrate test reports into your documentation with full traceability between test specifications, test cases, source code, and test results.
+This guide demonstrates how to integrate test reports into your
+documentation with full traceability between test specifications, test
+cases, source code, and test results.
 
 Overview
 --------
@@ -22,12 +22,14 @@ A comprehensive testing approach includes:
 * **Traceability**: Links between all these elements
 * **Test Reports**: Results from test execution
 
-By using Sphinx-Needs for test specifications, sphinx-codelinks for code tracing, and sphinx-test-reports for test results, we create a complete traceable testing ecosystem.
+By using Sphinx-Needs for test specifications, sphinx-codelinks for
+code tracing, and sphinx-test-reports for test results, we create a
+complete traceable testing ecosystem.
 
 Workflow
 --------
 
-.. mermaid::
+.. mermaid:: 
 
    graph LR
       REQ[Requirements] --> TS[Test Specifications]
@@ -36,7 +38,7 @@ Workflow
       TC --> RUN[Test Execution]
       RUN --> REPORT[Test Reports]
       REPORT --> DOC[Documentation]
-      
+
       style REQ fill:#FFB300
       style TS fill:#A6BDD7
       style TC fill:#A6BDD7
@@ -45,9 +47,10 @@ Workflow
       style DOC fill:#F6768E
 
 Step 1: Define Test Specifications
------------------------------------
+----------------------------------
 
-Create test specifications using the ``test-spec`` directive to define what needs to be tested:
+Create test specifications using the ``test-spec`` directive to define
+what needs to be tested:
 
 .. test-spec:: Factorial Function Test Specification
    :id: TS_FACTORIAL
@@ -55,12 +58,13 @@ Create test specifications using the ``test-spec`` directive to define what need
    :tags: factorial, math
 
    Test the factorial function for:
-   
+
    * Negative numbers (should return 1)
    * Zero (should return 1)
    * Positive numbers (should return correct factorial)
-   
-   The factorial function is critical for mathematical operations and must handle edge cases correctly.
+
+   The factorial function is critical for mathematical operations and
+   must handle edge cases correctly.
 
 .. test-spec:: Prime Number Check Test Specification
    :id: TS_PRIME
@@ -68,17 +72,19 @@ Create test specifications using the ``test-spec`` directive to define what need
    :tags: prime, math
 
    Test the IsPrime function for:
-   
+
    * Negative numbers (should return false)
    * Trivial cases (0, 1, 2, 3)
    * Positive numbers (both prime and composite)
-   
-   Prime number detection is used in cryptographic operations and must be accurate.
+
+   Prime number detection is used in cryptographic operations and must be
+   accurate.
 
 Step 2: Annotate Test Cases in Code
-------------------------------------
+-----------------------------------
 
-Add sphinx-codelinks annotations to your test cases. The annotation format is e.g.:
+Add sphinx-codelinks annotations to your test cases. The annotation
+format is e.g.:
 
 .. code-block:: cpp
 
@@ -94,20 +100,25 @@ Example from ``sample1_unittest.cpp``:
    :lines: 76-88
    :caption: Annotated test case with GTest properties
 
-The annotation ``@Test negative factorial values, T_FACT_001, test`` creates a traceable link between the test code and the documentation.
+The annotation ``@Test negative factorial values, T_FACT_001, test``
+creates a traceable link between the test code and the documentation.
 
 **GTest Properties** (``RecordProperty``):
 
-* ``need_id``: Links the test execution result to the test case need (T_FACT_001)
+* ``need_id``: Links the test execution result to the test case need
+  (T_FACT_001)
 * ``requirement``: Links to the requirement being tested (REQ_MATH_001)
 * ``test_spec``: Links to the test specification (TS_FACTORIAL)
 
-These properties are included in the XML test report and enable automatic linking between test results and documentation needs.
+These properties are included in the XML test report and enable
+automatic linking between test results and documentation needs.
 
 Step 3: Link Test Cases to Specifications
-------------------------------------------
+-----------------------------------------
 
-Test cases are automatically discovered from source code using sphinx-codelinks. The test files contain ``@`` annotations that define test needs:
+Test cases are automatically discovered from source code using
+sphinx-codelinks. The test files contain ``@`` annotations that define
+test needs:
 
 .. code-block:: cpp
 
@@ -119,35 +130,40 @@ Test cases are automatically discovered from source code using sphinx-codelinks.
      // ... test implementation
    }
 
-These annotations are parsed by sphinx-codelinks and automatically create test needs. Below are all test cases discovered from the test files:
+These annotations are parsed by sphinx-codelinks and automatically
+create test needs. Below are all test cases discovered from the test
+files:
 
-.. src-trace::
-   :project: eac-cpp
+.. src-trace:: 
+   :project: x-as-code-cpp
    :file: sample1_unittest.cpp
 
 The test cases link to:
 
-* **Test specifications** (e.g., ``TS_FACTORIAL``) via the ``:spec:`` field
-* **Implementation** (e.g., ``IMPL_2``) via the ``:implements:`` field  
+* **Test specifications** (e.g., ``TS_FACTORIAL``) via the ``:spec:``
+  field
+* **Implementation** (e.g., ``IMPL_2``) via the ``:implements:`` field
 * **Requirements** (e.g., ``REQ_MATH_001``) via GTest properties
 
 Step 4: Show Code Traceability
--------------------------------
+------------------------------
 
 Use sphinx-codelinks to display where test cases are implemented:
 
 .. code-block:: rst
 
-    .. src-trace:: Test Case Implementation
-        :project: eac-cpp
-        :directory: src
+   .. src-trace:: Test Case Implementation
+       :project: x-as-code-cpp
+       :directory: src
 
-This shows all annotated code locations, creating bidirectional links between documentation and source code.
+This shows all annotated code locations, creating bidirectional links
+between documentation and source code.
 
 Step 5: Integrate Test Reports
--------------------------------
+------------------------------
 
-After running tests, integrate the test results using sphinx-test-reports:
+After running tests, integrate the test results using
+sphinx-test-reports:
 
 .. code-block:: bash
 
@@ -158,13 +174,14 @@ After running tests, integrate the test results using sphinx-test-reports:
    cd build
    ./eac_test --gtest_output=xml:test-results.xml
 
-The test results XML file contains properties that link back to the test case needs, enabling complete traceability.
+The test results XML file contains properties that link back to the
+test case needs, enabling complete traceability.
 
 Traceability Matrix
 -------------------
 
 Test Specifications to Test Cases
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 View which test cases implement each test specification:
 
@@ -174,7 +191,7 @@ View which test cases implement each test specification:
    :style: table
 
 Test Cases to Implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 View the connection between test cases and the code they test:
 
@@ -191,7 +208,7 @@ To generate code coverage reports with line-level detail:
 
    # Run tests with coverage
    ./scripts/test_with_coverage.sh
-   
+
    # View coverage report
    open src/build/coverage_html/index.html
 
@@ -214,12 +231,12 @@ Integrate testing into your CI/CD pipeline:
        cd src
        cmake -S . -B build
        cmake --build build
-   
+
    - name: Run Tests
      run: |
        cd src/build
        ./eac_test --gtest_output=xml:test-results.xml
-   
+
    - name: Upload Test Results
      uses: actions/upload-artifact@v4
      with:
@@ -227,7 +244,7 @@ Integrate testing into your CI/CD pipeline:
        path: src/build/test-results.xml
 
 Complete Traceability Flow
----------------------------
+--------------------------
 
 The complete flow from requirements to test results:
 
@@ -254,11 +271,10 @@ By combining:
 
 You create a fully traceable testing ecosystem where:
 
-✅ Every test links to its specification
-✅ Every test links to the code it verifies
-✅ Test results are automatically integrated
-✅ Coverage is measured and reported
-✅ Traceability is bidirectional and complete
+✅ Every test links to its specification ✅ Every test links to the
+code it verifies ✅ Test results are automatically integrated ✅
+Coverage is measured and reported ✅ Traceability is bidirectional and
+complete
 
 Additional Resources
 --------------------

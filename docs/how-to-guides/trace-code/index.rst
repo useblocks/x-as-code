@@ -12,12 +12,13 @@ Follow the installation instructions in the `CodeLinks documentation <https://co
 
 **Step 2: Configure CodeLinks**
 
-Create a file named ``src_trace.toml`` in your ``docs`` folder (next
-to ``conf.py``) with the following content:
+Add a ``[codelinks]`` section to your ``ubproject.toml`` (next to
+``conf.py``) with the following content:
 
-.. literalinclude:: ../../src_trace.toml
+.. literalinclude:: ../../ubproject.toml
    :language: toml
-   :caption: src_trace.toml
+   :caption: ubproject.toml (codelinks section)
+   :start-at: "[codelinks]"
 
 **Step 3: Add the src-trace Directive**
 
@@ -78,11 +79,3 @@ Finally you can link from/to the traced source code lines like this:
 
    This is a requirement that links to a need that has traced source code
    lines.
-
-.. note::
-
-   Current limitation: ``ubCode`` is not aware of this need id yet. This
-   means that the ``ubCode`` navigation inside Visual Studio Code will
-   not work and jumping from this ``rst`` file to the source code line
-   will not work. This will be implemented and supported in a future
-   release.

@@ -36,6 +36,7 @@ extensions = [
     "sphinx_codelinks",
     "sphinxcontrib.mermaid",
     "sphinxcontrib.test_reports",
+    "ubt_sphinx",
 ]
 
 intersphinx_mapping = {
@@ -52,6 +53,21 @@ intersphinx_mapping = {
 # the project. Declarative configuration formats are also preferred as they
 # cannot contain logic and can be consumed by almost all languages.
 needs_from_toml = "ubproject.toml"
+
+###############################################################################
+# UBTRACE Config START
+###############################################################################
+
+# ubTrace project properties used by the ``ubtrace`` Sphinx builder.
+# Build with:  UBTRACE_VERSION=1.0 uv run sphinx-build -b ubtrace docs docs/_build/ubtrace
+# See https://ubtrace.useblocks.com for details.
+ubtrace_organization = "useblocks"
+ubtrace_project = "x-as-code"
+ubtrace_version = os.environ.get("UBTRACE_VERSION", version)
+
+###############################################################################
+# UBTRACE Config END
+###############################################################################
 
 needs_string_links = {
     # Adds link to the Sphinx-Needs configuration page

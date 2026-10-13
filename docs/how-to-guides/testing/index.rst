@@ -88,7 +88,7 @@ format is e.g.:
 
 .. code-block:: cpp
 
-   // @<description>, <need_id>, <need_type>
+   // @need: <description>, <need_id>, <need_type>
    TEST(TestSuite, TestName) {
        // test implementation
    }
@@ -100,7 +100,7 @@ Example from ``sample1_unittest.cpp``:
    :lines: 76-88
    :caption: Annotated test case with GTest properties
 
-The annotation ``@Test negative factorial values, T_FACT_001, test``
+The annotation ``@need: Test negative factorial values, T_FACT_001, test``
 creates a traceable link between the test code and the documentation.
 
 **GTest Properties** (``RecordProperty``):
@@ -117,12 +117,12 @@ Step 3: Link Test Cases to Specifications
 -----------------------------------------
 
 Test cases are automatically discovered from source code using
-sphinx-codelinks. The test files contain ``@`` annotations that define
+sphinx-codelinks. The test files contain ``@need:`` annotations that define
 test needs:
 
 .. code-block:: cpp
 
-   // @Test negative factorial values, T_FACT_001, test
+   // @need: Test negative factorial values, T_FACT_001, test
    TEST(FactorialTest, Negative) {
      RecordProperty("need_id", "T_FACT_001");
      RecordProperty("requirement", "REQ_MATH_001");

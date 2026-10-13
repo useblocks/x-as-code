@@ -4,7 +4,7 @@
 #include <string.h>
 
 // Clones a 0-terminated C string, allocating memory using new.
-// @Clone C string, IMPL_4, impl
+// @need: Clone C string, IMPL_4, impl
 const char* MyString::CloneCString(const char* a_c_string) {
   if (a_c_string == nullptr) return nullptr;
 
@@ -17,7 +17,7 @@ const char* MyString::CloneCString(const char* a_c_string) {
 
 // Sets the 0-terminated C string this MyString object
 // represents.
-// @Set C string, IMPL_5, impl
+// @need: Set C string, IMPL_5, impl
 void MyString::Set(const char* a_c_string) {
   // Makes sure this works when c_string == c_string_
   const char* const temp = MyString::CloneCString(a_c_string);

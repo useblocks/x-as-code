@@ -1,7 +1,7 @@
 .. _external-needs:
 
-:octicon:`log` How to integrate External Needs
-==============================================
+:octicon:`link-external` How to integrate External Needs
+========================================================
 
 Sometimes you want to integrate needs from an external source into your documentation.
 A known and valid use-case might be for example the integration of "plattform" requirements.

@@ -73,7 +73,7 @@ namespace {
 // Tests Factorial().
 
 // Tests factorial of negative numbers.
-// @Test negative factorial values, T_FACT_001, test, [TS_FACTORIAL, IMPL_2]
+// @need: Test negative factorial values, T_FACT_001, test, [TS_FACTORIAL, IMPL_2]
 TEST(FactorialTest, Negative) {
   // Link this test to documentation via GTest property
   RecordProperty("need_id", "T_FACT_001");
@@ -103,7 +103,7 @@ TEST(FactorialTest, Negative) {
 }
 
 // Tests factorial of 0.
-// @Test factorial of zero, T_FACT_002, test, [TS_FACTORIAL, IMPL_2]
+// @need: Test factorial of zero, T_FACT_002, test, [TS_FACTORIAL, IMPL_2]
 TEST(FactorialTest, Zero) {
   RecordProperty("need_id", "T_FACT_002");
   RecordProperty("requirement", "REQ_MATH_001");
@@ -113,7 +113,7 @@ TEST(FactorialTest, Zero) {
 }
 
 // Tests factorial of positive numbers.
-// @Test factorial of positive numbers, T_FACT_003, test, [TS_FACTORIAL, IMPL_2]
+// @need: Test factorial of positive numbers, T_FACT_003, test, [TS_FACTORIAL, IMPL_2]
 TEST(FactorialTest, Positive) {
   RecordProperty("need_id", "T_FACT_003");
   RecordProperty("requirement", "REQ_MATH_001");
@@ -128,7 +128,7 @@ TEST(FactorialTest, Positive) {
 // Tests IsPrime()
 
 // Tests negative input.
-// @Test prime check for negative values, T_PRIME_001, test, [TS_PRIME, IMPL_3]
+// @need: Test prime check for negative values, T_PRIME_001, test, [TS_PRIME, IMPL_3]
 TEST(IsPrimeTest, Negative) {
   RecordProperty("need_id", "T_PRIME_001");
   RecordProperty("requirement", "REQ_MATH_002");
@@ -142,7 +142,7 @@ TEST(IsPrimeTest, Negative) {
 }
 
 // Tests some trivial cases.
-// @Test prime check for trivial cases, T_PRIME_002, test, [TS_PRIME, IMPL_3]
+// @need: Test prime check for trivial cases, T_PRIME_002, test, [TS_PRIME, IMPL_3]
 TEST(IsPrimeTest, Trivial) {
   RecordProperty("need_id", "T_PRIME_002");
   RecordProperty("requirement", "REQ_MATH_002");
@@ -155,7 +155,7 @@ TEST(IsPrimeTest, Trivial) {
 }
 
 // Tests positive input.
-// @Test prime check for positive values, T_PRIME_003, test, [TS_PRIME, IMPL_3]
+// @need: Test prime check for positive values, T_PRIME_003, test, [TS_PRIME, IMPL_3]
 TEST(IsPrimeTest, Positive) {
   RecordProperty("need_id", "T_PRIME_003");
   RecordProperty("requirement", "REQ_MATH_002");

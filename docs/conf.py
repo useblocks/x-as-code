@@ -79,7 +79,7 @@ needs_string_links = {
     },
 }
 
-src_trace_config_from_toml = "src_trace.toml"
+src_trace_config_from_toml = "ubproject.toml"
 
 ###############################################################################
 # SPHINX-NEEDS Config END

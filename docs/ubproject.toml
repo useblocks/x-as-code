@@ -419,7 +419,6 @@ comment_type = "cpp"
 [codelinks.projects.x-as-code-cpp.analyse]
 get_need_id_refs = true
 get_oneline_needs = true
-get_multiline_needs = true
 
 [codelinks.projects.x-as-code-cpp.analyse.oneline_comment_style]
 start_sequence = "@need:"

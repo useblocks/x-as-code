@@ -1,7 +1,7 @@
 .. _mermaid-integration:
 
-:octicon:`apps` Mermaid Integration
-===================================
+:octicon:`code-square` Mermaid Integration
+==========================================
 
 Mermaid is a popular tool for creating diagrams and visualizations using a simple markdown-like syntax. It is often used in documentation to illustrate concepts, workflows, and architectures.
 

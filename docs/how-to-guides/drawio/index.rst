@@ -1,7 +1,7 @@
 .. _drawio-integration:
 
-:octicon:`apps` Draw.io Integration
-====================================
+:octicon:`workflow` Draw.io Integration
+=======================================
 
 Draw.io (diagrams.net) is a powerful, free diagramming tool that can be used to create various types of diagrams including flowcharts, network diagrams, UML diagrams, and more. This guide shows how to integrate Draw.io diagrams into your Sphinx documentation.
 

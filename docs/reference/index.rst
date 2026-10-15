@@ -1,6 +1,6 @@
 .. _reference:
 
-:octicon:`file-symlink-file` Reference
+:octicon:`book` Reference
 ======================================
 
 A curated collection of tools, libraries, and resources for **X-as-Code**

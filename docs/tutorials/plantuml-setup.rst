@@ -1,7 +1,7 @@
 .. _tutorial-plantuml-setup:
 
-:octicon:`image` Setting Up PlantUML for Sphinx-Needs
-=====================================================
+:octicon:`file-code` Setting Up PlantUML for Sphinx-Needs
+=========================================================
 
 This tutorial guides you through setting up PlantUML to unlock
 advanced diagram capabilities in sphinx-needs. By the end, you'll be

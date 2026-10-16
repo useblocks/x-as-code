@@ -11,7 +11,9 @@
 [project]
 name = "X-as-Code (XaC)"
 description = "Showcases for working with Sphinx-Needs"
-srcdir = "."
+
+[source]
+dir = "."
 
 # Rules for the ubCode formater, to get a nice looking documentation.
 [format_rst]
@@ -380,16 +382,6 @@ content = true
 content_required = true
 options = false
 
-[parse.extend_directives.button-link]
-# see https://sphinx-design.readthedocs.io/en/latest/badges_buttons.html#buttons
-# not yet part of ubCode internal directives
-description = "Sphinx-Design button with link"
-argument = true
-argument_required = true
-content = true
-content_required = true
-options = true
-
 # see https://sphinx-needs.readthedocs.io/en/latest/configuration.html#needs-import-keys
 [needs.import_keys]
 imported_project = "/needs_import.json"
@@ -427,10 +419,9 @@ comment_type = "cpp"
 [codelinks.projects.x-as-code-cpp.analyse]
 get_need_id_refs = true
 get_oneline_needs = true
-get_rst = true
 
 [codelinks.projects.x-as-code-cpp.analyse.oneline_comment_style]
-# start_sequence = "@"
+start_sequence = "@need:"
 # end_sequence for the online comments; default is an os-dependant newline character
 field_split_char = ","
 needs_fields = [

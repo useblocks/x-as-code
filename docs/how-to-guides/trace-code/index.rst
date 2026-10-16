@@ -18,7 +18,7 @@ Add a ``[codelinks]`` section to your ``ubproject.toml`` (next to
 .. literalinclude:: ../../ubproject.toml
    :language: toml
    :caption: ubproject.toml (codelinks section)
-   :start-at: "[codelinks]"
+   :start-at: [codelinks]
 
 **Step 3: Add the src-trace Directive**
 

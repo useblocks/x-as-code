@@ -36,6 +36,8 @@ The project includes several build scripts to help you build different component
 | `./scripts/build.sh` | **Full build** | Builds documentation, C++ executable, and runs unit tests |
 | `./scripts/build_app.sh` | **C++ only** | Builds the C++ project and runs tests |
 | `./scripts/build_doc.sh` | **Docs only** | Builds the Sphinx + Sphinx-Needs documentation |
+| `./scripts/build_doc_ubc.sh` | **Docs with ubCode** | Builds the same documentation with ubCode (`ubc build html`) |
+| `./scripts/check_build_parity.py` | **Build parity** | Checks that the Sphinx and the ubCode build have the same content |
 | `./scripts/test_with_coverage.sh` | **Tests with coverage** | Builds C++ project, runs tests, and generates code coverage report |
 | `./scripts/clean.sh` | **Clean** | Removes all build artifacts |
 | `./scripts/run_http_server.sh` | **Server generated HTML files** | Opens a http server and servers the generated html files. With this method you can view the generated html files also when developing in Codespaces |
@@ -78,6 +80,29 @@ Clean all build artifacts:
 ```
 
 > **💡 Tip**: Use `./scripts/build.sh` for your first build, then use targeted scripts for faster incremental builds during development.
+
+#### Dual Build: Sphinx and ubCode
+
+The documentation is built from the same sources with two tools:
+
+- **Sphinx** with Sphinx-Needs, configured in [docs/conf.py](docs/conf.py) and [docs/ubproject.toml](docs/ubproject.toml)
+- **ubCode** (`ubc build html`), configured in the `[build.html]` section of [docs/ubproject.toml](docs/ubproject.toml)
+
+```shell
+./scripts/build_doc.sh                   # Sphinx -> docs/_build/html
+./scripts/build_doc_ubc.sh               # ubCode -> docs/_build/ubc
+uv run python scripts/check_build_parity.py
+```
+
+The ubCode build needs the `ubc` CLI (0.38.0 or newer). No license key is required: this is
+a public open source repository, which ubCode detects from the git remote. Both builds
+render PlantUML diagrams with the bundled jar in `docs/utils/`, so Java must be installed.
+
+`check_build_parity.py` compares the content of both builds: pages, needs, page text,
+needtables, needflow diagrams, toctrees and the sidebar. The themes differ (furo vs. the
+ubCode theme), so markup and styling are not compared. Differences caused by known ubCode
+limitations are listed in `KNOWN_DIFFERENCES` in the script and reported separately; any
+other difference fails the check. The PR checks run both builds and this script.
 
 #### Viewing created HTML pages
 
@@ -215,5 +240,9 @@ If you encounter issues:
 5. **Rebuild container**: Use Command Palette → "Codespaces: Rebuild Container"
 
 > **💡 Tip**: Codespaces is perfect for quick contributions, testing, or when you don't want to set up the development environment locally. The automated secret management ensures a seamless experience.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 

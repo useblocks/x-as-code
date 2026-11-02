@@ -1,0 +1,49 @@
+/* ubCode theme overrides (loaded by `ubc build html` only, see [build.html] in ubproject.toml).
+ * Maps the useblocks brand colors from custom.css (written for furo) onto the ubc theme variables.
+ * ubc selects dark mode via :root[data-theme="dark"] or the OS preference, and redefines its
+ * variables there, so the mapping is repeated in each theme block. */
+
+:root,
+:root[data-theme="dark"] {
+    --ubc-brand: var(--ub-color-brand-main);
+    --ubc-toc-active: var(--ub-color-brand-main);
+    --ubc-highlight-on-target: var(--ub-color-brand-opaque);
+    --ubc-nav-hover-bg: var(--ub-color-brand-opaque);
+    --ubc-note: var(--ub-color-brand-main);
+    /* Links: text color, brand underline */
+    --ubc-link: var(--ubc-fg);
+    --ubc-link-hover: var(--ubc-fg);
+    --ubc-link-visited: var(--ubc-fg);
+    --ubc-link-underline: var(--ub-color-brand-muted);
+}
+
+/* furo light colors */
+:root {
+    --ub-color-brand-main: #583eff;
+    --ub-color-brand-muted: #b7a3ff;
+    --ub-color-brand-opaque: rgb(88, 62, 255, 0.2);
+}
+
+@media not print {
+    :root[data-theme="dark"] {
+        --ub-color-brand-main: #d4ff3e;
+        --ub-color-brand-muted: #b3bb00;
+        --ub-color-brand-opaque: rgba(228, 255, 62, 0.15);
+    }
+    @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+            --ub-color-brand-main: #e4ff3e;
+            --ub-color-brand-muted: #b3bb00;
+            --ub-color-brand-opaque: rgba(228, 255, 62, 0.15);
+            --ubc-brand: var(--ub-color-brand-main);
+            --ubc-toc-active: var(--ub-color-brand-main);
+            --ubc-highlight-on-target: var(--ub-color-brand-opaque);
+            --ubc-nav-hover-bg: var(--ub-color-brand-opaque);
+            --ubc-note: var(--ub-color-brand-main);
+            --ubc-link: var(--ubc-fg);
+            --ubc-link-hover: var(--ubc-fg);
+            --ubc-link-visited: var(--ubc-fg);
+            --ubc-link-underline: var(--ub-color-brand-muted);
+        }
+    }
+}

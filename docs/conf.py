@@ -108,7 +108,7 @@ exclude_patterns = [
 # We bring our own plantuml jar file.
 # These options tell Sphinxcontrib-PlantUML we it can find this file.
 local_plantuml_path = os.path.join(
-    os.path.dirname(__file__), "utils", "plantuml-1.2022.14.jar"
+    os.path.dirname(__file__), "utils", "plantuml-1.2026.9.jar"
 )
 plantuml = f"java -Djava.awt.headless=true -jar {local_plantuml_path}"
 # plantuml_output_format = 'png'

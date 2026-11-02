@@ -355,6 +355,17 @@ footer = ["**Status**: <<meta('status')>>"]
 # link_name= "GitHub #{{value}}"
 # options = ["line"]
 
+# ubCode: render the codelinks remote URL as a short "path#Lline" link.
+# Under Sphinx, sphinx-codelinks injects its own entry for this key at build time.
+[needs.string_links.remote-url]
+regex = '^(?P<url>https://github\.com/[^/]+/[^/]+/blob/[^/]+/(?P<path>.+))$'
+link_url = "{{url}}"
+link_name = "{{path}}"
+options = ["remote-url"]
+
+[needs.fields.remote-url]
+description = "Source code link, set by codelinks"
+
 [[needs.external_needs]]
 json_path = "./external/needs_external.json"
 # use this to download from a remote
@@ -430,3 +441,21 @@ needs_fields = [
    { "name" = "type", "type" = "str", "default" = "impl" },
    { "name" = "links", "type" = "list[str]", "default" = [] },
 ]
+
+# ubCode HTML builder (`ubc build html`); mirrors the Sphinx html_* settings in conf.py
+[build.html]
+title = "X as Code (XaC)"
+logo = "_static/xac_logo.png"
+logo_dark = "_static/xac_logo_dark.png"
+hide_title = true  # the logo already contains the name (furo: sidebar_hide_name)
+extra_css = ["_static/custom.css", "_static/ubc-custom.css"]
+source_repository = "https://github.com/useblocks/x-as-code"
+source_branch = "main"
+source_directory = "docs"
+
+[build.html.plantuml]
+enabled = true
+# ubCode needs PlantUML >= 1.2026.2; same jar as used by Sphinx (see conf.py)
+command = ["java", "-Djava.awt.headless=true", "-jar", "{config_dir}/utils/plantuml-1.2026.9.jar"]
+# Sphinx-Needs draws needflow with PlantUML too (its default engine)
+needflow = true
